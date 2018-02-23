@@ -30,3 +30,12 @@ WebContent/WEB-INF/views/javascripts/
 out/
 src/test/
 RadioNMS.iml
+target/classes/log4j.properties
+target/generated-sources/
+target/maven-archiver/
+target/maven-status/
+target/radionms/META-INF/
+target/radionms/WEB-INF/classes/log4j.properties
+target/radionms/WEB-INF/spring-mvc-servlet.xml
+target/radionms/WEB-INF/views/
+target/radionms/WEB-INF/web.xml
