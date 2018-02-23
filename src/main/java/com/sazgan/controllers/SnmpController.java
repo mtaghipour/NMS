@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/nms")
 public class SnmpController{
     
-    private Logger logger=Logger.getLogger (this.getClass ().getName ());
+    private Logger logger=Logger.getLogger(this.getClass().getName());
     
     @RequestMapping("/getDemo")
-    public String configSnmp (Model model){
+    public String configSnmp(Model model){
         
-        logger.info ("in configSnmp() method");
+        logger.info("in configSnmp() method");
         
-        SnmpConfig snmpConfig=new SnmpConfig ("udp:127.0.0.1/161");
-        model.addAttribute ("snmpConfig",snmpConfig);
+        SnmpConfig snmpConfig=new SnmpConfig("udp:127.0.0.1/161");
+        model.addAttribute("snmpConfig", snmpConfig);
         
         return "result";
         
