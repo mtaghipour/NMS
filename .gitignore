@@ -29,10 +29,7 @@ WebContent/WEB-INF/views/css/
 WebContent/WEB-INF/views/javascripts/
 out/
 src/test/
-target/classes
-target/generated-sources
-target/maven-archiver
-target/maven-status
-target/radionms
+target/
 RadioNMS.iml
 
+target/radionms.war
