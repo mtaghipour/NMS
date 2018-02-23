@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MainMenuController{
     
-    @RequestMapping( "/" )
-    public String showPage ( ) {
+    @RequestMapping("/")
+    public String showPage (){
         return "main-menu";
     }
 }
