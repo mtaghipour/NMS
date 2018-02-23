@@ -10,16 +10,16 @@ import org.snmp4j.transport.DefaultUdpTransportMapping;
 
 import java.io.IOException;
 
-public class SnmpConfig {
+public class SnmpConfig{
     
     private Snmp snmp;
     private String address;
     private ResponseListener listener;
     private String response;
     
-    private Logger logger = Logger.getLogger ( this.getClass ( ).getName ( ) );
+    private Logger logger = Logger.getLogger (this.getClass ( ).getName ( ));
     
-    public void setResponse ( String response ) {
+    public void setResponse (String response) {
         this.response = response;
     }
     
@@ -27,7 +27,7 @@ public class SnmpConfig {
         return response;
     }
     
-    public SnmpConfig ( String address ) {
+    public SnmpConfig (String address) {
         
         this.address = address;
         
@@ -55,7 +55,7 @@ public class SnmpConfig {
         transport.listen ();
         */
         
-        snmp = new Snmp ( new DefaultUdpTransportMapping ( ) );
+        snmp = new Snmp (new DefaultUdpTransportMapping ( ));
         snmp.listen ( );
     }
     
@@ -63,44 +63,44 @@ public class SnmpConfig {
      * To make this as simple as possible in my client I have a simple method which takes a single OID and
      * returns the response from the agent as a String.
      * */
-    public String getAsString ( OID oid ) throws IOException {
+    public String getAsString (OID oid) throws IOException {
         
-        ResponseEvent event = get ( new OID[]{ oid } );
+        ResponseEvent event = get (new OID[]{ oid });
         return event.getResponse ( ).toString ( );
     }
     
     
-    public void getAsStringAsync ( OID oids , ResponseListener listener ) {
+    public void getAsStringAsync (OID oids , ResponseListener listener) {
         
         try {
-            snmp.send ( getPDU_v1 ( new OID[]{ oids } ) , getTarget ( ) , null , listener );
+            snmp.send (getPDU_v1 (new OID[]{ oids }) , getTarget ( ) , null , listener);
         } catch ( IOException e ) {
-            throw new RuntimeException ( e );
+            throw new RuntimeException (e);
         }
     }
     
-    private PDU getPDU_v1 ( OID oids[] ) {
+    private PDU getPDU_v1 (OID oids[]) {
         
         PDU pdu = new PDU ( );
         
-        for ( OID oid : oids ) {
-            pdu.add ( new VariableBinding ( oid ) );
+        for (OID oid : oids) {
+            pdu.add (new VariableBinding (oid));
         }
         
-        pdu.setType ( PDU.GET );
+        pdu.setType (PDU.GET);
         
         return pdu;
     }
     
-    private ScopedPDU getPDU_v3 ( OID oids[] ) {
+    private ScopedPDU getPDU_v3 (OID oids[]) {
         
         ScopedPDU pdu = new ScopedPDU ( );
         
-        for ( OID oid : oids ) {
-            pdu.add ( new VariableBinding ( oid ) );
+        for (OID oid : oids) {
+            pdu.add (new VariableBinding (oid));
         }
         
-        pdu.setType ( PDU.GET );
+        pdu.setType (PDU.GET);
         
         return pdu;
     }
@@ -110,7 +110,7 @@ public class SnmpConfig {
      * */
     private Target getTarget ( ) {
         
-        Address targetAddress = GenericAddress.parse ( address );
+        Address targetAddress = GenericAddress.parse (address);
 
         /*
             CommunityTarget target = new CommunityTarget ();
@@ -121,9 +121,9 @@ public class SnmpConfig {
         */
         
         CommunityTarget target = new CommunityTarget ( );
-        target.setCommunity ( new OctetString ( "public" ) );
-        target.setAddress ( targetAddress );
-        target.setVersion ( SnmpConstants.version2c );
+        target.setCommunity (new OctetString ("public"));
+        target.setAddress (targetAddress);
+        target.setVersion (SnmpConstants.version2c);
         
         return target;
     }
@@ -133,17 +133,17 @@ public class SnmpConfig {
      * In a real application with lots of agents you would probably implement this asynchronously with a
      * ResponseListener instead to prevent your thread pool from being exhausted.
      * */
-    private ResponseEvent get ( OID[] oids ) throws IOException {
+    private ResponseEvent get (OID[] oids) throws IOException {
         
-        ResponseEvent response = snmp.send ( getPDU_v1 ( oids ) , getTarget ( ) );
+        ResponseEvent response = snmp.send (getPDU_v1 (oids) , getTarget ( ));
         
         if ( response.getResponse ( ) == null ) {
-            throw new RuntimeException ( "GET timed out" );
+            throw new RuntimeException ("GET timed out");
             
         } else {
             
-            logger.info ( "Received response from : " + response.getPeerAddress ( ) );
-            logger.info ( response.getResponse ( ).toString ( ) );
+            logger.info ("Received response from : " + response.getPeerAddress ( ));
+            logger.info (response.getResponse ( ).toString ( ));
         }
         
         return response;
