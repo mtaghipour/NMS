@@ -12,10 +12,10 @@
 <body>
 
 <%
-    Logger logger=Logger.getLogger(this.getClass().getName());
+    Logger logger = Logger.getLogger(this.getClass().getName());
 
-    SnmpConfig snmpConfig=(SnmpConfig) request.getAttribute("snmpConfig");
-    String snmpGet=snmpConfig.getAsString(new OID("1.3.6.1.2.1.1.1.0"));
+    SnmpConfig snmpConfig = (SnmpConfig) request.getAttribute("snmpConfig");
+    String snmpGet = snmpConfig.getAsString(new OID("1.3.6.1.2.1.1.1.0"));
     logger.info("In result.jsp file : " + snmpGet);
 
     snmpConfig.setResponse(snmpGet);
