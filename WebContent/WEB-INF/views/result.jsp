@@ -36,6 +36,8 @@
             PDU request = event.getRequest();
 
             if (response == null){
+                snmpConfig.setRequest("Time out (Request)");
+                snmpConfig.setResponse("Time out (Response)");
                 System.out.println("Request " + request + " timed out");
             }else{
                 snmpConfig.setRequest(request.toString());
