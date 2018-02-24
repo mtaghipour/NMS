@@ -16,7 +16,6 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/nms")
 public class SnmpController {
-    
     private Logger logger = Logger.getLogger(this.getClass().getName());
     final private SnmpConfig snmpConfig = new SnmpConfig("udp:127.0.0.1/161");
     
