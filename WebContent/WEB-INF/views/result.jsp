@@ -18,7 +18,8 @@
 <%
     Logger logger = Logger.getLogger(this.getClass().getName());
 
-    SnmpConfig snmpConfig = (SnmpConfig) request.getAttribute("snmpConfig");
+    final SnmpConfig snmpConfig;
+    snmpConfig = (SnmpConfig) request.getAttribute("snmpConfig");
 
     ResponseListener listener = new ResponseListener() {
         public void onResponse(ResponseEvent event) {
