@@ -15,6 +15,8 @@ public class SnmpConfig {
     private Snmp snmp;
     private String address;
     private ResponseListener listener;
+    
+    private String request;
     private String response;
     
     private Logger logger = Logger.getLogger(this.getClass().getName());
@@ -25,6 +27,14 @@ public class SnmpConfig {
     
     public String getResponse() {
         return response;
+    }
+    
+    public String getRequest() {
+        return request;
+    }
+    
+    public void setRequest(String request) {
+        this.request = request;
     }
     
     public SnmpConfig(String address) {

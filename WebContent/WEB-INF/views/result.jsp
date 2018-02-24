@@ -37,6 +37,8 @@
             if (response == null){
                 System.out.println("Request " + request + " timed out");
             }else{
+                snmpConfig.setRequest(request.toString());
+                snmpConfig.setResponse(response.toString());
                 System.out.println("Received response " + response + " on request " + request);
             }
         }
@@ -51,7 +53,8 @@
     snmpConfig.stop();
 %>
 
-Get value : ${snmpConfig.response}
+Request : ${snmpConfig.request}
+Response : ${snmpConfig.response}
 
 </body>
 </html>
