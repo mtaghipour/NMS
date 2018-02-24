@@ -23,7 +23,7 @@ public class SnmpController {
     @RequestMapping("/getDemo")
     public String configSnmp(Model model) {
         
-        logger.info("in configSnmp() method");
+        logger.info("configSnmp() ...");
         
         ResponseListener listener = new ResponseListener() {
             public void onResponse(ResponseEvent event) {
@@ -55,11 +55,11 @@ public class SnmpController {
         //logger.info("In result.jsp file : " + snmpGet);
         
         //snmpConfig.setResponse(snmpGet);
-        try{
+       /* try{
             snmpConfig.stop();
         }catch (IOException e){
             e.printStackTrace();
-        }
+        }*/
         
         model.addAttribute("snmpConfig", snmpConfig);
         
