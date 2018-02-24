@@ -29,16 +29,14 @@
               immediately can be useful when sending a request to a broadcast
               address.
             */
-
             ((Snmp) event.getSource()).cancel(event.getRequest(), this);
+
             PDU response = event.getResponse();
             PDU request = event.getRequest();
 
             if (response == null){
                 System.out.println("Request " + request + " timed out");
             }else{
-                snmpConfig.setResponse(response.toString());
-                logger.info("In result.jsp file : " + response);
                 System.out.println("Received response " + response + " on request " + request);
             }
         }
