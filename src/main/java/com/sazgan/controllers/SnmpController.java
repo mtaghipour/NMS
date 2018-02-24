@@ -42,7 +42,7 @@ public class SnmpController {
                 if (response == null){
                     snmpConfig.setRequest("Time out (Request)");
                     snmpConfig.setResponse("Time out (Response)");
-                }else{
+                } else{
                     snmpConfig.setRequest(request.toString());
                     snmpConfig.setResponse(response.toString());
                 }
@@ -50,11 +50,10 @@ public class SnmpController {
         };
         
         //String snmpGet = snmpConfig.getAsString(new OID("1.3.6.1.2.1.1.1.0"));
-        snmpConfig.getAsStringAsync(new OID("1.3.6.1.2.1.1.1.0"), listener);
-        
         //logger.info("In result.jsp file : " + snmpGet);
         
-        //snmpConfig.setResponse(snmpGet);
+        snmpConfig.getAsStringAsync(new OID("1.3.6.1.2.1.1.1.0"), listener);
+        
        /* try{
             snmpConfig.stop();
         }catch (IOException e){

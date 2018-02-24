@@ -41,9 +41,9 @@ public class SnmpConfig {
         
         this.address = address;
         
-        try{
+        try {
             start();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -82,9 +82,9 @@ public class SnmpConfig {
     
     public void getAsStringAsync(OID oids, ResponseListener listener) {
         
-        try{
+        try {
             snmp.send(getPDU_v1(new OID[]{oids}), getTarget(), null, listener);
-        }catch (IOException e){
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -93,7 +93,7 @@ public class SnmpConfig {
         
         PDU pdu = new PDU();
         
-        for (OID oid : oids){
+        for (OID oid : oids) {
             pdu.add(new VariableBinding(oid));
         }
         
@@ -106,7 +106,7 @@ public class SnmpConfig {
         
         ScopedPDU pdu = new ScopedPDU();
         
-        for (OID oid : oids){
+        for (OID oid : oids) {
             pdu.add(new VariableBinding(oid));
         }
         
@@ -150,7 +150,7 @@ public class SnmpConfig {
         if (response.getResponse() == null){
             throw new RuntimeException("GET timed out");
             
-        }else{
+        } else{
             
             logger.info("Received response from : " + response.getPeerAddress());
             logger.info(response.getResponse().toString());
