@@ -57,7 +57,6 @@
 %>
 
 Request : ${snmpConfig.request}
-<br><br>
 Response : ${snmpConfig.response}
 
 </body>
