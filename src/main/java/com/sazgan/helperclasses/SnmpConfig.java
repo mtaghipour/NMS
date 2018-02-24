@@ -21,15 +21,19 @@ public class SnmpConfig {
     public void setResponse(String response) {
         this.response = response;
     }
+    
     public String getResponse() {
         return response;
     }
+    
     public String getRequest() {
         return request;
     }
+    
     public void setRequest(String request) {
         this.request = request;
     }
+    
     public SnmpConfig(String address) {
         
         this.address = address;
@@ -40,9 +44,11 @@ public class SnmpConfig {
             e.printStackTrace();
         }
     }
+    
     public void stop() throws IOException {
         snmp.close();
     }
+    
     /*
      * Start the Snmp session. If you forget the listen() method you will not get any answers because under the hood
      * the communication is asynchronous and the listen() method listens for answers
@@ -59,6 +65,7 @@ public class SnmpConfig {
         snmp = new Snmp(new DefaultUdpTransportMapping());
         snmp.listen();
     }
+    
     /*
      * To make this as simple as possible in my client I have a simple method which takes a single OID and
      * returns the response from the agent as a String.
@@ -68,6 +75,7 @@ public class SnmpConfig {
         ResponseEvent event = get(new OID[]{oid});
         return event.getResponse().toString();
     }
+    
     public void getAsStringAsync(OID oids, ResponseListener listener) {
         
         try {
@@ -76,6 +84,7 @@ public class SnmpConfig {
             throw new RuntimeException(e);
         }
     }
+    
     private PDU getPDU_v1(OID oids[]) {
         
         PDU pdu = new PDU();
@@ -88,6 +97,7 @@ public class SnmpConfig {
         
         return pdu;
     }
+    
     private ScopedPDU getPDU_v3(OID oids[]) {
         
         ScopedPDU pdu = new ScopedPDU();
@@ -100,6 +110,7 @@ public class SnmpConfig {
         
         return pdu;
     }
+    
     /*
      * This method returns a Target, which contains information about where the data should be fetched and how
      * */
@@ -122,6 +133,7 @@ public class SnmpConfig {
         
         return target;
     }
+    
     /*
      * This method is more generic and is capable of handling multiple OIDs.
      * In a real application with lots of agents you would probably implement this asynchronously with a
