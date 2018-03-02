@@ -1,3 +1,4 @@
-/*
-* This is controller package
-* */
+/**
+ * This is controller package.
+ */
+package com.sazgan.controllers;
