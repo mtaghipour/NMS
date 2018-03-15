@@ -30,7 +30,7 @@ public class SnmpController {
     final private SnmpConfig snmpConfig = new SnmpConfig("udp:127.0.0.1/161");
     /**
      * @param model ..... Model to handle SnmpConfig attribute.
-     * @return ..... Transfer us to result jps file.
+     * @return ..... Sends us to result jps file.
      */
     @RequestMapping("/getDemo")
     public String configSnmp(final Model model) {
